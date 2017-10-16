@@ -1,0 +1,26 @@
+server:
+  port: 4000
+
+management:
+  security:
+    enabled: false
+
+zuul:
+  ignoredServices: '*'
+  add-host-header: true
+  routes:
+    auth-service:
+      path: /uaa/**
+      stripPrefix: false
+      sensitiveHeaders:
+    account-service:
+      path: /accounts/**
+      stripPrefix: false
+      sensitiveHeaders:
+      
+spring:
+  thymeleaf:
+    mode: HTML5
+    encoding: UTF-8
+    content-type: text/html
+    cache: false
