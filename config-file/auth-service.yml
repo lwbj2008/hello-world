@@ -29,6 +29,11 @@ spring:
       min-evictable-idle-time-millis: 100000
   #jpa:
     #show-sql: true
+    
+security:
+  oauth2:
+    resource:
+      filter-order: 3
 
 #customer 
 db:
