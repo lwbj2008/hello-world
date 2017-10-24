@@ -37,7 +37,7 @@ authserver:
 security:
   oauth2:
     resource:
-      user-info-uri: http://${authserver.hostname}:${authserver.port}${authserver.contextPath}/current
+      user-info-uri: http://${authserver.hostname}:${authserver.port}${authserver.contextPath}/users/current
 
 logging:
   level:
