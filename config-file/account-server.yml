@@ -14,13 +14,13 @@ security:
   user:
     name: user
     password: password
-  oauth2:
-    client:
-      clientId: account-service
-      clientSecret: account-service
-      accessTokenUri: http://${authserver.hostname}:${authserver.port}${authserver.contextPath}/oauth/token
-      grant-type: client_credentials
-      scope: server
+  #oauth2:
+    #client:
+      #clientId: account-service
+      #clientSecret: account-service
+      #accessTokenUri: http://${authserver.hostname}:${authserver.port}${authserver.contextPath}/oauth/token
+      #grant-type: client_credentials
+      #scope: server
 
 spring:
   datasource:
