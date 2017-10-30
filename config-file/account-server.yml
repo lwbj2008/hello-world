@@ -16,11 +16,11 @@ security:
     password: password
   oauth2:
     client:
-      clientId: password
-      clientSecret: password
+      clientId: android
+      clientSecret: android
       accessTokenUri: http://${authserver.hostname}:${authserver.port}${authserver.contextPath}/oauth/token
       grant-type: client_credentials
-      scope: ui
+      scope: client
 
 spring:
   datasource:
