@@ -1,0 +1,64 @@
+server:
+  port: 9999
+
+spring:
+  rabbitmq:
+    host: 192.168.40.250
+    port: 5672
+    username: rabbitmq
+    password: rabbitmq
+    
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000
+
+zuul:
+  ignoredServices: '*'
+  host:
+    connect-timeout-millis: 30000
+    socket-timeout-millis: 30000
+  routes:
+    auth-service:
+      path: /auth/**
+      serviceId: pig-auth-service
+      stripPrefix: true
+      sensitiveHeaders:
+    pig-admin-service:
+      path: /admin/**
+      serviceId: pig-admin-service
+      stripPrefix: true
+      sensitiveHeaders:
+  ratelimit:
+    key-prefix: pig-ratelimite 
+    enabled: true 
+    repository: REDIS 
+    behind-proxy: true
+    policies:
+      pig-admin-service:
+        limit: 100
+        quota: 100
+        refresh-interval: 3
+  
+security:
+  validate:
+    code: false
+  sessions: stateless
+  oauth2:
+    resource:
+      loadBalanced: true
+      user-info-uri: http://pig-auth-service/user
+      prefer-token-info: false
+      service-id: pig-gateway
+    
+filter:
+  urls:
+    anon:
+      - /auth/**
+      - /admin/code/*
+       
+logging:
+  config: classpath:logback.xml

@@ -1,0 +1,12 @@
+server:
+  port: 3000
+
+pig:
+  auth:
+    clientId: pig
+    clientSecret: pig
+    scope: server
+    
+logging:
+  config: classpath:logback.xml
+
